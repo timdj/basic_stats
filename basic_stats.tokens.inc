@@ -50,7 +50,7 @@ function basic_stats_tokens($type, $tokens, array $data = array(), array $option
   if ($type == 'basic-stats') {
     foreach ($tokens as $name => $original) {
       switch ($name) {
-        case 'node':
+        case 'nodes':
           $replacements[$original] = basic_stats_number_nodes();
           break;
 
