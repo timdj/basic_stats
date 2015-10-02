@@ -1,0 +1,5 @@
+name = Basic stats
+description = Provides basic site stats such as node total per content type and total active users
+core = 7.x
+dependencies[] = block
+files[] = basic_stats.tokens.inc
