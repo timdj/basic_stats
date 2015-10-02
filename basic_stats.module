@@ -17,7 +17,7 @@ function basic_stats_number_nodes($content_type=NULL) {
     $query = db_select('node', 'n');
     $query->fields('n', array('nid'));
     $query->condition('status', 1, '=');
-    if($content_type) {
+    if(isset($content_type)) {
       $query->condition('type', $content_type, '=');
     }
     $nodes = $query->execute();
