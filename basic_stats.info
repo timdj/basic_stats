@@ -1,6 +1,0 @@
-name = Basic stats
-description = Provides basic site stats such as node total per content type and total active users
-version = "7.x-0.1"
-core = 7.x
-dependencies[] = token
-files[] = basic_stats.tokens.inc

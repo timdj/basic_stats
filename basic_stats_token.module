@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Module file for basic_stats.
+ * Module file for basic_stats_token.
  */
 
 
@@ -11,7 +11,7 @@
  *
  * @return int
  */
-function basic_stats_number_nodes($content_type=NULL) {
+function basic_stats_token_number_nodes($content_type=NULL) {
   $totals = &drupal_static(__FUNCTION__);
   if (!isset($totals[$content_type])) {
     $query = db_select('node', 'n');
@@ -32,7 +32,7 @@ function basic_stats_number_nodes($content_type=NULL) {
  *
  * @return int
  */
-function basic_stats_number_users() {
+function basic_stats_token_number_users() {
   $usercount = &drupal_static(__FUNCTION__);
   if(!isset($usercount)) {
     $query = db_select('users', 'u');

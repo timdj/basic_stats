@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Token callbacks for the basic_stats module.
+ * Token callbacks for the basic_stats_token module.
  */
 
 /**
  * Implements hook_token_info().
  *
  */
-function basic_stats_token_info() {
+function basic_stats_token_token_info() {
   $info['types']['basic-stats']         = array(
     'name'        => t('Basic stats'),
     'description' => t('Tokens related to Basic stats.'),
@@ -42,7 +42,7 @@ function basic_stats_token_info() {
 *
 * @ingroup token_example
 */
-function basic_stats_tokens($type, $tokens, array $data = array(), array $options = array()) {
+function basic_stats_token_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
 
   // Text format tokens.
@@ -50,17 +50,17 @@ function basic_stats_tokens($type, $tokens, array $data = array(), array $option
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'nodes':
-          $replacements[$original] = basic_stats_number_nodes();
+          $replacements[$original] = basic_stats_token_number_nodes();
           break;
 
         case 'users':
-          $replacements[$original] = basic_stats_number_users();
+          $replacements[$original] = basic_stats_token_number_users();
           break;
 
         default:
           $node_types = node_type_get_names();
           if(isset($node_types[$name])) {
-            $replacements[$original] = basic_stats_number_nodes($name);
+            $replacements[$original] = basic_stats_token_number_nodes($name);
           }
           break;
       }

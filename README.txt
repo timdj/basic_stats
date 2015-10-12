@@ -1,17 +1,13 @@
 README.txt
 ==========
 
-Module with basic stats functions and provide tokens with the stats.
-These tokens can also be used in text inputs when using token_filter module
+Module with basic stats token functions such as total number of nodes, total per content type and number of active users
+These tokens can then also be used in input filters when using token_filter module
 
-currently
+
 print basic_stats_number_nodes(); //returns total of active nodes
 print basic_stats_number_nodes($content_type); //returns total of nodes for that content_type
-
 print basic_stats_number_users(); returns total of active users
-
-Basic stats also provides tokens for these
-
 
 
 CREDITS
