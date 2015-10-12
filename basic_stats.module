@@ -29,7 +29,6 @@ function basic_stats_number_nodes($content_type=NULL) {
 
 /**
  * Get number of active users, optional per role
- * @param array $roles
  *
  * @return int
  */
@@ -39,7 +38,7 @@ function basic_stats_number_users() {
     $query = db_select('users', 'u');
     $query->fields('u', array('uid'));
     $query->condition('status', 1, '=');
-    $users     = $query->execute();
+    $users = $query->execute();
     $usercount = $users->rowCount();
   }
   return $usercount;

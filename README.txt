@@ -1,7 +1,7 @@
 README.txt
 ==========
 
-Module with basic stat functions and provide tokens with the stats.
+Module with basic stats functions and provide tokens with the stats.
 These tokens can also be used in text inputs when using token_filter module
 
 currently

@@ -44,7 +44,6 @@ function basic_stats_token_info() {
 */
 function basic_stats_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
-  $sanitize     = !empty($options['sanitize']);
 
   // Text format tokens.
   if ($type == 'basic-stats') {
@@ -66,7 +65,6 @@ function basic_stats_tokens($type, $tokens, array $data = array(), array $option
           break;
       }
     }
-
   }
   return $replacements;
 }
