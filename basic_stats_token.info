@@ -1,6 +1,6 @@
 name = Basic stats token
 description = Provides basic site stats tokens such as node total per content type and total active users
-version = "7.x-0.1"
+version = "7.x-0.2"
 core = 7.x
 dependencies[] = token
 files[] = basic_stats.tokens.inc
