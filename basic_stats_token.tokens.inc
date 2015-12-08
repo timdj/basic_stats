@@ -31,7 +31,7 @@ function basic_stats_token_token_info() {
 
   $info['tokens']['basic-stats']['users']   = array(
     'name'        => t('User count'),
-    'description' => t('Total of active users.'),
+    'description' => t('Total of active users. With optional configured selected roles'),
   );
 
   return $info;

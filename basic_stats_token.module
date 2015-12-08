@@ -4,6 +4,35 @@
  * Module file for basic_stats_token.
  */
 
+function basic_stats_token_menu() {
+  $items['admin/config/system/basic_stats_token'] = array(
+    'title' => 'Basic stats token settings',
+    'type'  => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('basic_stats_token_config'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+
+function basic_stats_token_config() {
+  $role_options = array_map('check_plain', user_roles());
+
+  $form['role'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('users'),
+  );
+  $form['role']['basic_stats_count_roles'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Only count these roles as users'),
+    '#default_value' => variable_get('basic_stats_count_roles', NULL),
+    '#options' => $role_options,
+    '#description' => t('Only count selected roles as members for users token, if none is selected all active users will count'),
+  );
+
+  return system_settings_form($form);
+}
 
 /**
  * Get number of publishes nodes per content type
@@ -35,8 +64,17 @@ function basic_stats_token_number_nodes($content_type=NULL) {
 function basic_stats_token_number_users() {
   $usercount = &drupal_static(__FUNCTION__);
   if(!isset($usercount)) {
+    $count_roles = variable_get('basic_stats_count_roles', NULL);
+
     $query = db_select('users', 'u');
     $query->fields('u', array('uid'));
+
+    if($count_roles) {
+      $count_roles = array_filter($count_roles);
+      $query->leftJoin('users_roles', 'ur', 'u.uid = ur.uid');
+      $query->condition('ur.rid', $count_roles, 'IN');
+    }
+
     $query->condition('status', 1, '=');
     $users = $query->execute();
     $usercount = $users->rowCount();
